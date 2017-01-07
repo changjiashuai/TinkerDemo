@@ -1,10 +1,10 @@
 package io.github.changjiashuai.tinkerdemo;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,8 +31,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Tinker Path Update Test", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+//                Snackbar.make(view, "Tinker Path Update Success", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -83,9 +89,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(),
+                    Environment.getExternalStorageDirectory().getAbsolutePath()
+                            + "/patch_signed_7zip.apk");
 
         } else if (id == R.id.nav_slideshow) {
-
+            ShareTinkerInternals.killAllOtherProcess(getApplicationContext());
+            android.os.Process.killProcess(android.os.Process.myPid());
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

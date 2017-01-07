@@ -9,11 +9,11 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="加载增量更新" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="重启" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
